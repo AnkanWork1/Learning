@@ -1,0 +1,70 @@
+"use client";
+
+import Table from "@/components/Table";
+console.log(Table); // should be a function, not {}
+
+// Example user data
+const users = [
+  {
+    name: "Esthera Jackson",
+    email: "esthera@simmple.com",
+    avatar: "/avatars/avatar6.png",
+    role: "Manager",
+    department: "Organization",
+    status: "Online",
+    employed: "14/06/21",
+  },
+  {
+    name: "Alexa Liras",
+    email: "alexa@simmple.com",
+    avatar: "/avatars/avatar5.png",
+    role: "Programmer",
+    department: "Developer",
+    status: "Offline",
+    employed: "14/06/21",
+  },
+  {
+    name: "Laurent Michael",
+    email: "laurent@simmple.com",
+    avatar: "/avatars/avatar4.png",
+    role: "Executive",
+    department: "Projects",
+    status: "Online",
+    employed: "14/06/21",
+  },
+  {
+    name: "Freduardo Hill",
+    email: "freduardo@simmple.com",
+    avatar: "/avatars/avatar3.png",
+    role: "Manager",
+    department: "Organization",
+    status: "Online",
+    employed: "14/06/21",
+  },
+  {
+    name: "Daniel Thomas",
+    email: "daniel@simmple.com",
+    avatar: "/avatars/avatar2.png",
+    role: "Programmer",
+    department: "Developer",
+    status: "Offline",
+    employed: "14/06/21",
+  },
+  {
+    name: "Mark Wilson",
+    email: "mark@simmple.com",
+    avatar: "/avatars/avatar1.png",
+    role: "Designer",
+    department: "UI/UX Design",
+    status: "Offline",
+    employed: "14/06/21",
+  },
+];
+
+export default function UsersPage() {
+  return (
+    <div className="p-6">
+      <Table users={users} />
+    </div>
+  );
+}
