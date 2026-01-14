@@ -1,7 +1,13 @@
-import Link from "next/link";
-import { blogsMeta } from "../data/blogs";
+async function getBlogs() {
+  const res = await fetch("http://localhost:3000/api/blogs", {
+    cache: "no-store",
+  });
+  return res.json();
+}
 
-export default function BlogsPage() {
+export default async function BlogsPage() {
+  const blogs = await getBlogs();
+
   return (
     <div className="min-h-screen bg-black text-green-500 px-10">
       <h1 className="text-red-500 text-4xl text-center mt-6 mb-12">
@@ -9,18 +15,16 @@ export default function BlogsPage() {
       </h1>
 
       <div className="max-w-4xl mx-auto flex flex-col gap-8">
-        {blogsMeta.map((blog) => (
-          
-          <Link
+        {blogs.map((blog) => (
+          <a
             key={blog.slug}
-            href={`/Blogs/${blog.slug}`}
-            className="hover:text-green-400"
+            href={`/blogs/${blog.slug}`}
+            className="border border-green-700 p-4 rounded hover:text-green-400"
           >
-            <div className="border border-green-700 p-4 rounded">
-              <h2 className="text-2xl font-semibold">{blog.title}</h2>
-              <p className="text-green-400">{blog.slug}</p>
-            </div>
-          </Link>
+            <h2 className="text-2xl">{blog.title}</h2>
+            <p>{blog.description}</p>
+            <p>👁 {blog.stats.views}</p>
+          </a>
         ))}
       </div>
     </div>
